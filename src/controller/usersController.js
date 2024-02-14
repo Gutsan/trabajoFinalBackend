@@ -50,6 +50,16 @@ export class userController {
             res.status(500).send(({ message: "Ha ocurrido un error inesperado" }))
         }
     }
+    static async deleteUser(req, res) {
+        const { id } = req.body
+        try {
+            const user = await usersModel.deleteUser(id)
+            res.status(201).send(user)
+        } catch (error) {
+            console.log(error)
+            res.status(500).send(({ message: "Ha ocurrido un error inesperado" }))
+        }
+    }
 }
 
 const generateJsonUser = (user) => {
