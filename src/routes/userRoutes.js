@@ -9,3 +9,4 @@ loginRoutes.get("/", validateUser, userController.login)
 
 userRoutes.get("/", validateToken, userController.getUser)
 userRoutes.post("/", userController.createUser)
+userRoutes.put("/", userController.modifyUser)

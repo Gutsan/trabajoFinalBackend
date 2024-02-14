@@ -31,11 +31,19 @@ export class userController {
         }
     }
     static async createUser(req, res) {
-        console.log("hola")
         const { name, email, password, phone, rol } = req.body
-        console.log(name, email, password, phone, rol)
         try {
             const user = await usersModel.createtUser(name, email, password, phone, rol)
+            res.status(201).send(user)
+        } catch (error) {
+            console.log(error)
+            res.status(500).send(({ message: "Ha ocurrido un error inesperado" }))
+        }
+    }
+    static async modifyUser(req, res) {
+        const { id, name, email, password, phone, rol } = req.body
+        try {
+            const user = await usersModel.modifyUser(id, name, email, password, phone, rol)
             res.status(201).send(user)
         } catch (error) {
             console.log(error)

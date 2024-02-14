@@ -24,4 +24,16 @@ export class usersModel {
         const { rows } = await pool.query(query, values)
         return rows
     }
+    static async modifyUser(id, name, email, password, phone, rol) {
+        const query = "UPDATE users SET name=$1,email=$2,password=$3,phone=$4,rol=$5 WHERE id=$6"
+        const values = [name, email, password, phone, rol, id]
+        const { rows } = await pool.query(query, values)
+        return rows
+    }
+    static async deleteUser(id, name, email, password, phone, rol) {
+        const query = "DELETE FROM users WHERE id=$1"
+        const values = [name, email, password, phone, rol, id]
+        const { rows } = await pool.query(query, values)
+        return rows
+    }
 }
