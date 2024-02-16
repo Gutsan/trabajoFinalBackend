@@ -11,7 +11,7 @@ export class userController {
                 const token = jwt.sign({ email }, KEY_TOKEN)
                 res.status(200).send({ token })
             } else {
-                res.status(400).send(({ message: "Email o contraseña incorrecta" }))
+                res.status(401).send(({ message: "Email o contraseña incorrecta" }))
             }
         } catch (error) {
             res.status(500).send(({ message: "Ha ocurrido un error inesperado" }))
@@ -67,5 +67,5 @@ const generateJsonUser = (user) => {
     const addressesURL = `http://localhost:${PORT}/user/${id}/direcciones`
     const pedidosURL = `http://localhost:${PORT}/user/${id}/pedidos`
     const favoritosURL = `http://localhost:${PORT}/user/${id}/Favoritos`
-    return ({ name, email, phone, rol, addressesURL, pedidosURL, favoritosURL })
+    return ({ id, name, email, phone, rol, addressesURL, pedidosURL, favoritosURL })
 }

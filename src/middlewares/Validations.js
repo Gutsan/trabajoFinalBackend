@@ -5,11 +5,15 @@ import jwt from "jsonwebtoken"
 
 export const validateUser = async (req, res, next) => {
     const { email, password } = req.body
-
-    const [user] = await usersModel.getUser(email)
-    const isPassword = (password === user.password)
-    req.validUser = user && isPassword
-    next()
+    console.log(req.body)
+    if (email) {
+        const [user] = await usersModel.getUser(email)
+        const isPassword = (password === user.password)
+        req.validUser = user && isPassword
+        next()
+    } else {
+        req.validUser = false
+    }
 }
 
 export const validateToken = async (req, res, next) => {
