@@ -7,3 +7,4 @@ export const productRoutes = express.Router();
 
 productRoutes.get("/", productController.getAllProduct)
 productRoutes.get("/:id", productController.getProductForId)
+productRoutes.get("/:id_category", productController)

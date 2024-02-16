@@ -25,4 +25,14 @@ export class productController {
             res.status(500).send(({ message: "Ha ocurrido un error inesperado" }))
         }
     }
+    static async getProductForCategory(req, res) {
+        const { id_category } = req.params
+        try {
+            const products = await productModels.getProductForCategory(id_category)
+            res.status(200).send(products)
+        } catch (error) {
+            console.log(error)
+            res.status(500).send(({ message: "Ha ocurrido un error inesperado" }))
+        }
+    }
 }

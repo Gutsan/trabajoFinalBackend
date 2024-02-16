@@ -1,11 +1,11 @@
 import dotenv from "dotenv";
-import crypto from "crypto";
 
-dotenv.config();
-export const PORT = 3000;
+dotenv.config()
+export const PORT = process.env.PORT
 
-export const DB_HOST = "localhost";
-export const DB_USER = "postgres";
-export const DB_PASSWORD = "postgres";
-export const DB_DATABASE = "oregano";
-export const KEY_TOKEN = crypto.randomBytes(32).toString("hex");
+export const DB_HOST = process.env.DB_HOST
+export const DB_USER = process.env.DB_USER
+export const DB_PASSWORD = process.env.DB_PASSWORD
+export const DB_DATABASE = process.env.DB_DATABASE
+
+export const KEY_TOKEN = process.env.KEY_TOKEN
