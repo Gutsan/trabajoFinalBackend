@@ -36,7 +36,7 @@ CREATE TABLE products (
     id SERIAL PRIMARY KEY, 
     name VARCHAR(250) NOT NULL, 
     description VARCHAR(250) NOT NULL,
-    img_url VARCHAR(250)
+    img_url_url VARCHAR(250)
     price INT NOT NULL, 
     stock INT, 
     category_id INT REFERENCES category(id),
