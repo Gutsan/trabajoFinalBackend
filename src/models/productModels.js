@@ -12,12 +12,10 @@ const pool = new Pool({
 
 export class productModels {
     static async getAllProduct(Limit, Offset) {
-        console.log(Limit, Offset);
         const query =
             "SELECT p.*, c.name AS category FROM products p JOIN category c ON p.category_id = c.id  LIMIT $1 OFFSET $2";
         const values = [Limit, Offset];
         const { rows } = await pool.query(query, values);
-        console.log("ahora acá");
         return rows;
     }
     static async getProductForId(id) {

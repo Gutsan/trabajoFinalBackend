@@ -17,6 +17,7 @@ export class productController {
     }
     static async getProductForId(req, res) {
         const { id } = req.params
+        console.log(id)
         try {
             const products = await productModels.getProductForId(id)
             res.status(200).send(products)
