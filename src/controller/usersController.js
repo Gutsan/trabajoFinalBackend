@@ -4,7 +4,8 @@ import { usersModel } from "../models/userModels.js";
 
 export class userController {
   static async login(req, res) {
-    const { email } = req.body;
+    let { email } = req.body;
+    email = email.toLowerCase()
     try {
       const ValidUser = req.validUser;
       if (ValidUser) {
@@ -21,7 +22,7 @@ export class userController {
     const validToken = req.validToken;
     try {
       if (validToken) {
-        const user = await usersModel.getUser(validToken.email);
+        const user = await usersModel.getUser(validToken.email.toLowerCase());
         const jsonUser = generateJsonUser(user);
         res.status(200).send(jsonUser);
       }

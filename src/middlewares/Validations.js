@@ -5,10 +5,9 @@ import jwt from "jsonwebtoken"
 
 export const validateUser = async (req, res, next) => {
     const { email, password } = req.body
-    console.log(req.body)
     if (email) {
-        const [user] = await usersModel.getUser(email)
-        const isPassword = (password === user.password)
+        const [user] = await usersModel.getUser(email.toLowerCase())
+        const isPassword = (password === user?.password)
         req.validUser = user && isPassword
         next()
     } else {
@@ -18,6 +17,7 @@ export const validateUser = async (req, res, next) => {
 
 export const validateToken = async (req, res, next) => {
     const authorization = req.header("Authorization")
+    console.log(authorization)
     if (!authorization) {
         res.status(401).send({ message: "Token no ingresado" })
     } else {
