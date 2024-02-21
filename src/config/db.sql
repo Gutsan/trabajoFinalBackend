@@ -36,7 +36,7 @@ CREATE TABLE products (
     id SERIAL PRIMARY KEY, 
     name VARCHAR(250) NOT NULL, 
     description VARCHAR(250) NOT NULL,
-    img_url_url VARCHAR(250)
+    img_url_url VARCHAR(250),
     price INT NOT NULL, 
     stock INT, 
     category_id INT REFERENCES category(id),
@@ -75,14 +75,10 @@ DROP TABLE products;
 
 --INSERTAR DATO DE CATEGORIAS Y PRODUCTOS
 INSERT INTO category (id,name,img_url) VALUES
-(DEFAULT,'Frutos Secos','../../../public/FRUTOS_SECOS_500x200.png'),
+(DEFAULT,'FrutosSecos','../../../public/FRUTOS_SECOS_500x200.png'),
 (DEFAULT,'Cacao','../../../public/Cacao_500x200.png'),
-(DEFAULT,'Barra de Proteinas','../../../public/BARRA_500x200.png'),
-(DEFAULT,'Infusiones','../../../public/te_500x200.png'),
-(DEFAULT,'Semillas','../../../public/Semillas.jpg'),
-(DEFAULT,'Mixes','../../../public/Mixes.webp'),
-(DEFAULT,'Cereales','../../../public/Cereales.jpg'),
-(DEFAULT,'Harinas','../../../public/Harinas.jpg');
+(DEFAULT,'BarradeProteinas','../../../public/BARRA_500x200.png'),
+(DEFAULT,'Infusiones','../../../public/te_500x200.png');
 SELECT * FROM category;
 
 INSERT INTO products (id,name,description,price,stock,category_id,img_url) VALUES
@@ -90,19 +86,18 @@ INSERT INTO products (id,name,description,price,stock,category_id,img_url) VALUE
 (DEFAULT, 'Cacao en Polvo Orgánico', 'Cacao en polvo orgánico, perfecto para batidos y postres.', 200, 40, 2, 'https://www.brotavida.cl/cdn/shop/files/cacao-brota-frente_grande.png?v=1700835984'),
 (DEFAULT, 'Barra de Proteínas de Chocolate', 'Barra de proteínas sabor chocolate, ideal como snack después del ejercicio.', 300, 30, 3, 'https://tienda.estasenlinea.cl/713-large_default/barras-de-proteina-chocolate.jpg'),
 (DEFAULT, 'Infusión de Manzanilla', 'Infusión de manzanilla, relajante y reconfortante.', 400, 60, 4, 'https://http2.mlstatic.com/D_NQ_NP_692170-MLA73809761655_012024-O.webp'),
-(DEFAULT, 'Semillas de Chía', 'Semillas de chía, ricas en omega-3 y fibra.', 600, 45, 5, 'https://www.emporio4m.cl/cdn/shop/products/22ASEMILLADECHIA_360x360.jpg?v=1681145687'),
-(DEFAULT, 'Harina de Avena Integral', 'Harina de avena integral, perfecta para elaborar panqueques y tortitas.', 700, 55, 8, 'https://www.emporio4m.cl/cdn/shop/products/46AHARINADEALMENDRA_360x360.jpg?v=1681144602'),
-(DEFAULT, 'Mix Almendra, Maní y Pasas con sal', 'Mezcla de frutos secos y pasas, ideal para picar entre horas.', 250, 35, 6, 'https://www.emporio4m.cl/cdn/shop/products/59AMIXALMENDRASMANIYPASAS_720x720.jpg?v=1681145073'),
-(DEFAULT, 'Cereal de Avena con Miel', 'Cereal de avena con miel, delicioso y nutritivo.', 350, 25, 7, 'https://www.emporio4m.cl/cdn/shop/products/58AARROZ_720x720.jpg?v=1681144053'),
+(DEFAULT, 'Semillas de Chía', 'Semillas de chía, ricas en omega-3 y fibra.', 600, 45, 1, 'https://www.emporio4m.cl/cdn/shop/products/22ASEMILLADECHIA_360x360.jpg?v=1681145687'),
+(DEFAULT, 'Mix Almendra, Maní y Pasas con sal', 'Mezcla de frutos secos y pasas, ideal para picar entre horas.', 250, 35, 1, 'https://www.emporio4m.cl/cdn/shop/products/59AMIXALMENDRASMANIYPASAS_720x720.jpg?v=1681145073'),
+(DEFAULT, 'Cereal de Avena con Miel', 'Cereal de avena con miel, delicioso y nutritivo.', 350, 25, 1, 'https://www.emporio4m.cl/cdn/shop/products/58AARROZ_720x720.jpg?v=1681144053'),
 (DEFAULT, 'Nueces Naturales', 'Nueces naturales, ricas en ácidos grasos saludables.', 450, 50, 1, 'https://www.emporio4m.cl/cdn/shop/products/25ANUEZMARIPOSACLARA_720x720.jpg?v=1681145215'),
 (DEFAULT, 'Polvo de Cacao Amargo', 'Polvo de cacao amargo, perfecto para repostería.', 550, 40, 2, 'https://www.emporio4m.cl/cdn/shop/products/15-2APASAFLAMEV2_720x720.jpg?v=1681145288'),
 (DEFAULT, 'Barra de Proteínas de Vainilla', 'Barra de proteínas sabor vainilla, una opción deliciosa y saludable.', 650, 30, 3, 'https://www.mermoz.cl/wp-content/uploads/2023/12/5425002401948.png'),
 (DEFAULT, 'Infusión de Té Verde', 'Infusión de té verde, antioxidante y revitalizante.', 750, 60, 4, 'https://cdn.tremus.cl/wp-content/uploads/2020/08/TE_VERDE_100_bolsitas.jpg'),
-(DEFAULT, 'Semillas de Girasol', 'Semillas de girasol, perfectas para añadir a ensaladas y yogures.', 320, 45, 5, 'https://encrypted-tbn0.gstatic.com/shopping?q=tbn:ANd9GcREHRVCcWDuxCJFItq1KxsucOOkpkBLJrifp5QsFEPjCHv4mFKHQhLZtPuQUvbXQJn6oc_6naSauN5N4V-liWLn-rqWyZ4Qf4CaYlT3_HvO_ea7Z7weJc9H&usqp=CAE'),
-(DEFAULT, 'Harina de Trigo Integral', 'Harina de trigo integral, ideal para preparar pan casero.', 420, 55, 8, 'https://www.emporio4m.cl/cdn/shop/products/29AHARINADELINAZA_360x360.jpg?v=1681144643'),
-(DEFAULT, 'Mix de Frutos Secos y Chocolate', 'Mezcla de frutos secos y chocolate, un snack irresistible.', 280, 35, 6, 'https://www.emporio4m.cl/cdn/shop/products/79AMIXDESEMILLAS_360x360.jpg?v=1681145177'),
-(DEFAULT, 'Cereal de Maíz con Miel', 'Cereal de maíz con miel, un desayuno crujiente y delicioso.', 720, 25, 7, 'https://www.emporio4m.cl/cdn/shop/products/41AQUINOAPOP_360x360.jpg?v=1681145658'),
+(DEFAULT, 'Semillas de Girasol', 'Semillas de girasol, perfectas para añadir a ensaladas y yogures.', 320, 45, 1, 'https://encrypted-tbn0.gstatic.com/shopping?q=tbn:ANd9GcREHRVCcWDuxCJFItq1KxsucOOkpkBLJrifp5QsFEPjCHv4mFKHQhLZtPuQUvbXQJn6oc_6naSauN5N4V-liWLn-rqWyZ4Qf4CaYlT3_HvO_ea7Z7weJc9H&usqp=CAE'),
+(DEFAULT, 'Mix de Frutos Secos y Chocolate', 'Mezcla de frutos secos y chocolate, un snack irresistible.', 280, 35, 1, 'https://www.emporio4m.cl/cdn/shop/products/79AMIXDESEMILLAS_360x360.jpg?v=1681145177'),
+(DEFAULT, 'Cereal de Maíz con Miel', 'Cereal de maíz con miel, un desayuno crujiente y delicioso.', 720, 25, 1, 'https://www.emporio4m.cl/cdn/shop/products/41AQUINOAPOP_360x360.jpg?v=1681145658'),
 (DEFAULT, 'Avellanas Tostadas', 'Avellanas tostadas, ideales para picar entre horas.', 380, 50, 1, 'https://www.emporio4m.cl/cdn/shop/products/43ASESAMONEGRO_360x360.jpg?v=1681145794'),
-(DEFAULT, 'Semilla de Linaza', 'Las semillas de lino, más conocidas como linaza', 420, 40, 5, 'https://www.emporio4m.cl/cdn/shop/products/27ASEMILLASDELINAZA_360x360.jpg?v=1681145703'),
-(DEFAULT, 'Quinoa Negra', 'La quinoa negra está considerada como una proteína completa', 630, 30, 7, 'https://www.emporio4m.cl/cdn/shop/products/43ASESAMONEGRO_360x360.jpg?v=1681145794'),
+(DEFAULT, 'Semilla de Linaza', 'Las semillas de lino, más conocidas como linaza', 420, 40, 1, 'https://www.emporio4m.cl/cdn/shop/products/27ASEMILLASDELINAZA_360x360.jpg?v=1681145703'),
+(DEFAULT, 'Quinoa Negra', 'La quinoa negra está considerada como una proteína completa', 630, 30, 1, 'https://www.emporio4m.cl/cdn/shop/products/43ASESAMONEGRO_360x360.jpg?v=1681145794'),
 (DEFAULT, 'Maní Tostado Sin Sal', 'Ideal para un snack entre comidas o un aperitivo con mix de frutos secos', 800, 60, 1, 'https://www.emporio4m.cl/cdn/shop/products/20AMANITOSTADOSINSAL_360x360.jpg?v=1681145050');
+SELECT * FROM products;
