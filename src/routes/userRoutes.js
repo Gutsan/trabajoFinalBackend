@@ -11,3 +11,4 @@ userRoutes.get("/", validateToken, userController.getUser);
 userRoutes.post("/", userController.createUser);
 userRoutes.put("/", userController.modifyUser);
 userRoutes.delete("/:id", userController.deleteUser);
+userRoutes.get("/all", userController.getallUser)

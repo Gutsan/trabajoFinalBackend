@@ -74,6 +74,17 @@ export class userController {
       res.status(500).send({ message: "Ha ocurrido un error inesperado" });
     }
   }
+  static async getallUser(req, res) {
+    try {
+      if (validToken) {
+        const users = await usersModel.getAllUser();
+        res.status(200).send(users);
+      }
+    } catch (error) {
+      console.log(error);
+      res.status(500).send({ message: "Ha ocurrido un error inesperado" });
+    }
+  }
 }
 
 const generateJsonUser = (user) => {

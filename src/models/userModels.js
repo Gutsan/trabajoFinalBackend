@@ -36,4 +36,9 @@ export class usersModel {
         const { rows } = await pool.query(query, values)
         return rows
     }
+    static async getAllUser() {
+        const query = 'SELECT * FROM'
+        const { rows } = await pool.query(query)
+        return rows
+    }
 }
