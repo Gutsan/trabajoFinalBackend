@@ -15,7 +15,7 @@ export class userController {
         res.status(401).send({ message: "Email o contraseña incorrecta" });
       }
     } catch (error) {
-      res.status(500).send({ message: "Ha ocurrido un error inesperado", email: email, ValidUser: ValidUser });
+      res.status(500).send({ message: "Ha ocurrido un error inesperado", email: email });
     }
   }
   static async getUser(req, res) {
