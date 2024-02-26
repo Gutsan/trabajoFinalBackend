@@ -76,12 +76,9 @@ export class userController {
   }
   static async getallUser(req, res) {
     try {
-      if (validToken) {
-        const users = await usersModel.getAllUser();
-        res.status(200).send(users);
-      }
+      const users = await usersModel.getAllUser();
+      res.status(200).send(users);
     } catch (error) {
-      console.log(error);
       res.status(500).send({ message: "Ha ocurrido un error inesperado" });
     }
   }
