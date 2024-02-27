@@ -32,11 +32,12 @@ export class userController {
     }
   }
   static async createUser(req, res) {
-    const { name, email, password, phone, rol } = req.body;
+    let { name, email, password, phone, rol } = req.body;
+    email = email.toLowerCase()
     try {
       const user = await usersModel.createtUser(
         name,
-        email.toLowerCase(),
+        email,
         password,
         phone,
         rol
@@ -48,17 +49,20 @@ export class userController {
     }
   }
   static async modifyUser(req, res) {
-    const { name, email, phone } = req.body;
+    let { name, email, phone } = req.body;
     const validToken = req.validToken;
     try {
       if (validToken) {
         const password = req.password
-        const user = await usersModel.getUser(validToken.email.toLowerCase());
-        const { id, rol } = user[0];
+        const [user] = await usersModel.getUser(validToken.email.toLowerCase());
+        const { id, rol } = user;
+        email = email ? email.toLowerCase() : user.email.toLowerCase()
+        name = name ?? user.name
+        name = phone ?? user.phone
         const userModify = await usersModel.modifyUser(
           id,
           name,
-          email.toLowerCase(),
+          email,
           password,
           phone,
           rol
