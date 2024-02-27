@@ -78,7 +78,10 @@ INSERT INTO users VALUES(DEFAULT,'Bastian','bas.gutierrez@gmail.com','1234','569
 SELECT * FROM users;
 SELECT * FROM products;
 ALTER TABLE products RENAME COLUMN img TO img_url;
-UPDATE users SET name='Erik Silva',email='Erik@gmail.com',password='1234',phone='56973823469',rol='Administrador' WHERE id=3:
+UPDATE users SET name='Erik Silva',email='erik@gmail.com',password='1234',phone='56973823469',rol='Administrador' WHERE id=3;
+UPDATE users SET email='roberto@carlos.cl',password='1234',phone='56973823469',rol='client' WHERE id=7;
+
+
 DROP TABLE users;
 DROP TABLE products;
 

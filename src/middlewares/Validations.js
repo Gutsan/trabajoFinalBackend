@@ -49,3 +49,13 @@ export const verifyPassword = async (req, res, next) => {
         next()
     }
 }
+
+export const verifyEmail = async (req, res, next) => {
+    const { email } = req.body
+    const user = await usersModel.getUser(email);
+    if (user) {
+        res.status(401).send({ message: "Email ya registrado" })
+    } else {
+        next()
+    }
+}

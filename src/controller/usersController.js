@@ -58,7 +58,7 @@ export class userController {
         const userModify = await usersModel.modifyUser(
           id,
           name,
-          email,
+          email.toLowerCase(),
           password,
           phone,
           rol
