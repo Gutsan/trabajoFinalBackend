@@ -41,4 +41,15 @@ export class productController {
       res.status(500).send({ message: "Ha ocurrido un error inesperado" });
     }
   }
+  static async createProduct(req, res) {
+    const { name, description, img_url, price, stock, category_id } = req.body
+    try {
+      const products = await productModels.createProduct(name, description, img_url, price, stock, category_id)
+      res.status(201).send(products);
+    } catch (error) {
+      console.log(error);
+      res.status(500).send({ message: "Ha ocurrido un error inesperado" });
+    }
+
+  }
 }
