@@ -32,6 +32,15 @@ CREATE TABLE category(
     img_url VARCHAR(250)
 );
 
+CREATE TABLE cart(
+    carrito_id SERIAL PRIMARY KEY,
+    cantidad integer NOT NULL,
+    opcion character varying(20) NOT NULL,
+    precio bigint NOT NULL,
+    user_id INT REFERENCES users(id),
+    product_id INT REFERENCES products(id)
+);
+
 CREATE TABLE products (
     id SERIAL PRIMARY KEY, 
     name VARCHAR(250) NOT NULL, 
@@ -79,7 +88,11 @@ INSERT INTO category (id,name,img_url) VALUES
 (DEFAULT,'Cacao','../../../public/Cacao_500x200.png'),
 (DEFAULT,'BarradeProteinas','../../../public/BARRA_500x200.png'),
 (DEFAULT,'Infusiones','../../../public/te_500x200.png');
-SELECT * FROM category;
+(DEFAULT,'Infusiones','../../../public/te_500x200.png'),
+(DEFAULT,'Semillas','../../../public/Semillas.jpg'),
+(DEFAULT,'Mixes','../../../public/Mixes.webp'),
+(DEFAULT,'Cereales','../../../public/Cereales.jpg'),
+(DEFAULT,'Harinas','../../../public/Harinas.jpg');
 
 INSERT INTO products (id,name,description,price,stock,category_id,img_url) VALUES
 (DEFAULT, 'Almendra Entera', 'Almendras tostadas y listas para consumir.', 500, 50, 1, 'https://www.emporio4m.cl/cdn/shop/products/3AALMENDRAENTERA_360x360.jpg?v=1681138458'),
@@ -100,4 +113,3 @@ INSERT INTO products (id,name,description,price,stock,category_id,img_url) VALUE
 (DEFAULT, 'Semilla de Linaza', 'Las semillas de lino, más conocidas como linaza', 420, 40, 1, 'https://www.emporio4m.cl/cdn/shop/products/27ASEMILLASDELINAZA_360x360.jpg?v=1681145703'),
 (DEFAULT, 'Quinoa Negra', 'La quinoa negra está considerada como una proteína completa', 630, 30, 1, 'https://www.emporio4m.cl/cdn/shop/products/43ASESAMONEGRO_360x360.jpg?v=1681145794'),
 (DEFAULT, 'Maní Tostado Sin Sal', 'Ideal para un snack entre comidas o un aperitivo con mix de frutos secos', 800, 60, 1, 'https://www.emporio4m.cl/cdn/shop/products/20AMANITOSTADOSINSAL_360x360.jpg?v=1681145050');
-SELECT * FROM products;

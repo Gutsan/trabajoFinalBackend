@@ -19,7 +19,8 @@ export class productModels {
     return rows;
   }
   static async getProductForId(id) {
-    const query = "SELECT * FROM products WHERE id=$1";
+    const query =
+      "SELECT p.*, c.name AS category FROM products p JOIN category c ON p.category_id = c.id WHERE p.id=$1";
     const values = [id];
     const { rows } = await pool.query(query, values);
     return rows;
