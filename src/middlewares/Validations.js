@@ -17,7 +17,6 @@ export const validateUser = async (req, res, next) => {
 
 export const validateToken = async (req, res, next) => {
     const authorization = req.header("Authorization")
-    console.log(authorization)
     if (!authorization) {
         res.status(401).send({ message: "Token no ingresado" })
     } else {
@@ -31,5 +30,22 @@ export const validateToken = async (req, res, next) => {
             console.log(error)
             res.status(401).send({ message: "Token invalido" })
         }
+    }
+}
+
+export const verifyPassword = async (req, res, next) => {
+    const { password, newPassword } = req.body;
+    const validToken = req.validToken;
+    const user = await usersModel.getUser(validToken.email.toLowerCase());
+    if (newPassword) {
+        if (password === user[0].password) {
+            req.password = newPassword
+            next()
+        } else {
+            res.status(401).send({ message: "Password incorrecta" })
+        }
+    } else {
+        req.password = user[0].password
+        next()
     }
 }

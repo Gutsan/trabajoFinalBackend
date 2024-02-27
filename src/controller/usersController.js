@@ -36,7 +36,7 @@ export class userController {
     try {
       const user = await usersModel.createtUser(
         name,
-        email,
+        email.toLowerCase(),
         password,
         phone,
         rol
@@ -48,17 +48,23 @@ export class userController {
     }
   }
   static async modifyUser(req, res) {
-    const { id, name, email, password, phone, rol } = req.body;
+    const { name, email, phone } = req.body;
+    const validToken = req.validToken;
     try {
-      const user = await usersModel.modifyUser(
-        id,
-        name,
-        email,
-        password,
-        phone,
-        rol
-      );
-      res.status(201).send(user);
+      if (validToken) {
+        const password = req.password
+        const user = await usersModel.getUser(validToken.email.toLowerCase());
+        const { id, rol } = user[0];
+        const userModify = await usersModel.modifyUser(
+          id,
+          name,
+          email,
+          password,
+          phone,
+          rol
+        );
+        res.status(201).send(userModify);
+      }
     } catch (error) {
       console.log(error);
       res.status(500).send({ message: "Ha ocurrido un error inesperado" });
