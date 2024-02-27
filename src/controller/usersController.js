@@ -58,7 +58,7 @@ export class userController {
         const { id, rol } = user;
         email = email ? email.toLowerCase() : user.email.toLowerCase()
         name = name ?? user.name
-        name = phone ?? user.phone
+        phone = phone ?? user.phone
         const userModify = await usersModel.modifyUser(
           id,
           name,
